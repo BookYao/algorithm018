@@ -22,7 +22,18 @@ int climbStairs(int n){
     return tmp;
 }
 
+int climbStairs2(int n) { 
+    int first = 0, second = 1, tmp = 0;
+    while (n--) {
+        tmp = first + second;
+        first = second;
+        second = tmp;
+    }
+    return tmp;
+}
+
 int main(void) {
-    printf("result:%d\n", climbStairs(5));
+    printf("result:%d\n", climbStairs(10));
+    printf("result2:%d\n", climbStairs2(10));
     return 0;
 }
