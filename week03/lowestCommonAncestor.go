@@ -16,27 +16,29 @@
  * }
  */
 
- func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
-     if root == nil {
+func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+    if root == nil {
         return nil
-     }
+    }
 
-     if root == p || root == q {
-         return root
-     }
+    if root == p || root == q {
+        return root
+    }
 
-     left := lowestCommonAncestor(root.Left, p, q)
-     right := lowestCommonAncestor(root.Right, p, q)
+    // 左子树查找
+    left := lowestCommonAncestor(root.Left, p, q)
 
-     if left == nil {
-         return right
-     }
+    // 右子树查找
+    right := lowestCommonAncestor(root.Right, p, q)
 
-     if right == nil {
-         return left
-     }
-
-     return root
+    if left == nil {
+        return right
+    } else if right == nil {
+        return left
+    } else {
+        // 左右节点都找到，说明root就是公共祖先 
+        return root
+    }
 }
 
 
